@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF 阅读笔记</title>
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+
+<div id="toolbar">
+  <div class="toolbar-left">
+    <div class="app-logo">📖 PDF笔记</div>
+    <span id="file-name">加载中...</span>
+  </div>
+  <div class="toolbar-center">
+    <button id="prev-page">‹</button>
+    <input type="number" id="page-input" min="1" value="1">
+    <span> / </span>
+    <span id="total-pages">-</span>
+    <button id="next-page">›</button>
+  </div>
+  <div class="toolbar-right">
+    <button id="zoom-out">－</button>
+    <span id="zoom-level">130%</span>
+    <button id="zoom-in">＋</button>
+    <button id="btn-toggle-panel">📋 笔记</button>
+  </div>
+</div>
+
+<div id="main-layout">
+  <div id="viewer-container">
+    <div id="pdf-container"></div>
+  </div>
+
+  <div id="notes-panel" class="panel-hidden">
+    <div class="panel-header">
+      <h3>所有笔记</h3>
+      <button id="btn-close-panel">✕</button>
+    </div>
+    <div id="notes-list">
+      <div class="empty-hint">还没有笔记<br><small>选中文字即可开始批注</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- 高亮颜色菜单 -->
+<div id="highlight-menu" style="display:none">
+  <div class="menu-label">选择高亮颜色</div>
+  <div class="color-row">
+    <button class="color-dot" data-color="#FFE066" style="background:#FFE066"></button>
+    <button class="color-dot" data-color="#A8E6CF" style="background:#A8E6CF"></button>
+    <button class="color-dot" data-color="#FFB3BA" style="background:#FFB3BA"></button>
+    <button class="color-dot" data-color="#B3D9FF" style="background:#B3D9FF"></button>
+    <button class="color-dot" data-color="#E8B4FF" style="background:#E8B4FF"></button>
+  </div>
+</div>
+
+<!-- 便签卡片模板 -->
+<template id="tpl-note-card">
+  <div class="note-card">
+    <div class="card-header">
+      <span class="card-color-dot"></span>
+      <span class="card-page-label"></span>
+      <div class="card-btns">
+        <button class="btn-collapse" title="折叠为悬浮球">○</button>
+        <button class="btn-delete" title="删除">✕</button>
+      </div>
+    </div>
+    <div class="card-quote"></div>
+    <textarea class="card-textarea" placeholder="写下你的笔记..."></textarea>
+    <div class="card-footer">
+      <button class="btn-save">保存</button>
+    </div>
+  </div>
+</template>
+
+<!-- 悬浮球模板 -->
+<template id="tpl-float-ball">
+  <div class="float-ball" title="点击展开笔记">💬</div>
+</template>
+
+<script src="pdf.min.js"></script>
+<script src="viewer.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "PDF 阅读笔记",
+  "version": "1.3.0",
+  "description": "在PDF上高亮文字、添加便签笔记，像阅读实体书一样批注PDF",
+
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "viewer.html",
+        "viewer.js",
+        "viewer.css",
+        "pdf.min.js",
+        "pdf.worker.min.js",
+        "cmaps/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "PDF 阅读笔记"
+  }
+}
